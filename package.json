@@ -12,6 +12,12 @@
   },
   "dependencies": {
     "@vercel/node": "^5.5.5",
-    "nodemailer": "^7.0.10"
+    "nodemailer": "^7.0.10",
+    "vercel": "^48.9.0"
+  },
+  "scripts": {
+    "start": "vercel dev",
+    "build": "vercel build --prod",
+    "type-check": "tsc --noEmit"
   }
 }
