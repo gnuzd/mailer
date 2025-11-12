@@ -4,9 +4,6 @@ import { sendMail } from '$lib/utils';
 import { config } from '$lib/constant';
 
 export async function POST({ request }) {
-	const a = await request.json();
-	return json({ a }, { status: 200 });
-
 	try {
 		const { provider, ...data } = await request.json();
 		const conf = config[provider];
@@ -17,7 +14,7 @@ export async function POST({ request }) {
 
 			return json({ info }, { status: 200 });
 		}
-	} catch (error) {
-		return json({ message: 'Error parsing JSON body' }, { status: 400 });
+	} catch (error: any) {
+		return json({ message: error.message }, { status: 400 });
 	}
 }
