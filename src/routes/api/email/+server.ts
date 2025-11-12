@@ -4,9 +4,13 @@ import { sendMail } from '$lib/utils';
 import { config } from '$lib/constant';
 
 export async function POST({ request }) {
+	const a = await request.json();
+	console.log(a);
+
 	try {
 		const { provider, ...data } = await request.json();
 		const conf = config[provider];
+		console.log(conf);
 
 		if (conf) {
 			const info = await sendMail(conf, data);
