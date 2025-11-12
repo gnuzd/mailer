@@ -7,7 +7,6 @@ export async function POST({ request }) {
 	try {
 		const { provider, ...data } = await request.json();
 		const conf = config[provider];
-		console.log(conf);
 
 		if (conf) {
 			const info = await sendMail(conf, data);

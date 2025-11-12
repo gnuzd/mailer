@@ -11,7 +11,7 @@ export const config: Record<string, SMTPPool.Options> = {
 		pool: true,
 		host: ATOMARIUS_SMTP_HOST,
 		port: Number(ATOMARIUS_SMTP_PORT),
-		secure: true,
+		secure: false,
 		auth: {
 			user: ATOMARIUS_SMTP_USER,
 			pass: ATOMARIUS_SMTP_PASS
