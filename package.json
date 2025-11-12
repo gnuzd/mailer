@@ -1,0 +1,17 @@
+{
+  "name": "mailer",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/nodemailer": "^7.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@vercel/node": "^5.5.5",
+    "nodemailer": "^7.0.10"
+  }
+}
