@@ -5,7 +5,7 @@ import { config } from '$lib/constant';
 
 export async function POST({ request }) {
 	const a = await request.json();
-	console.log(a);
+	return json({ a }, { status: 200 });
 
 	try {
 		const { provider, ...data } = await request.json();
