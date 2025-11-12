@@ -14,7 +14,7 @@ export const sendMail = (config: SMTPPool.Options, data: Data) => {
 
   return transporter.sendMail({
     from: `"${data.name}" <${data.email}>`,
-    to: 'contact@atomarius.com',
+    to: data.to,
     subject: data.subject,
     text: data.body,
   });
