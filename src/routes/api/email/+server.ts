@@ -9,7 +9,7 @@ export async function POST({ request }) {
 		const conf = config[provider];
 
 		if (conf) {
-			const info = sendMail(conf, data);
+			const info = await sendMail(conf, data);
 
 			return json({ info }, { status: 200 });
 		}
