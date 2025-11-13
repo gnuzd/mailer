@@ -4,6 +4,7 @@ import { sendMail } from '$lib/utils';
 import { config, whiltelist } from '$lib/constant';
 
 export async function POST({ request }: RequestEvent) {
+	console.warn(request);
 	return json({ request });
 	// const originalHost = request.headers.get('Host') || '';
 	// const forwardedHost = request.headers.get('X-Forwarded-Host') || '';
