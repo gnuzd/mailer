@@ -4,6 +4,7 @@ import { sendMail } from '$lib/utils';
 import { config, whiltelist } from '$lib/constant';
 
 export async function POST({ request, url }: RequestEvent) {
+	console.log(url.host);
 	if (!whiltelist.includes(url.host)) return json({ message: 'Not Supported' }, { status: 503 });
 
 	try {
