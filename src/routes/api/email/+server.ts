@@ -1,9 +1,11 @@
-import { json } from '@sveltejs/kit';
+import { json, type RequestEvent } from '@sveltejs/kit';
 
 import { sendMail } from '$lib/utils';
-import { config } from '$lib/constant';
+import { config, whiltelist } from '$lib/constant';
 
-export async function POST({ request }) {
+export async function POST({ request, url }: RequestEvent) {
+	if (!whiltelist.includes(url.host)) return json({ message: 'Not Supported' }, { status: 503 });
+
 	try {
 		const { provider, ...data } = await request.json();
 		const conf = config[provider];
@@ -13,7 +15,11 @@ export async function POST({ request }) {
 
 			return json({ info }, { status: 200 });
 		}
-	} catch (error: any) {
-		return json({ message: error.message }, { status: 400 });
+	} catch (error: unknown) {
+		let errorMessage = 'An unknown error occurred.';
+		if (error instanceof Error) {
+			errorMessage = error.message;
+		}
+		return json({ message: errorMessage }, { status: 400 });
 	}
 }

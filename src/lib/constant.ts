@@ -18,3 +18,5 @@ export const config: Record<string, SMTPPool.Options> = {
 		}
 	}
 };
+
+export const whiltelist = ['atomarius.com'];
