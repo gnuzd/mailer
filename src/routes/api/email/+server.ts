@@ -6,8 +6,9 @@ import { config, whiltelist } from '$lib/constant';
 export async function POST({ request }: RequestEvent) {
 	const originalHost = request.headers.get('Host') || '';
 	const forwardedHost = request.headers.get('X-Forwarded-Host') || '';
+	const hostname = (originalHost || forwardedHost).replace('https://', '');
 
-	if (!whiltelist.includes(originalHost || forwardedHost)) {
+	if (!whiltelist.includes(hostname)) {
 		return json({ message: 'Not Supported' }, { status: 503 });
 	}
 
