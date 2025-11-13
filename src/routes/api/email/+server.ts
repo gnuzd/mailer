@@ -5,7 +5,7 @@ import { config, whiltelist } from '$lib/constant';
 
 export async function POST({ request, url }: RequestEvent) {
 	console.log(url.host);
-	if (!whiltelist.includes(url.host)) return json({ message: 'Not Supported' }, { status: 503 });
+	// if (!whiltelist.includes(url.host)) return json({ message: 'Not Supported' }, { status: 503 });
 
 	try {
 		const { provider, ...data } = await request.json();
