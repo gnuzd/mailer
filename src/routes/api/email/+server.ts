@@ -3,8 +3,13 @@ import { json, type RequestEvent } from '@sveltejs/kit';
 import { sendMail } from '$lib/utils';
 import { config, whiltelist } from '$lib/constant';
 
-export async function POST({ request, url }: RequestEvent) {
-	if (!whiltelist.includes(url.host)) return json({ message: 'Not Supported' }, { status: 503 });
+export async function POST({ request }: RequestEvent) {
+	const originalHost = request.headers.get('Host') || '';
+	const forwardedHost = request.headers.get('X-Forwarded-Host') || '';
+
+	if (!whiltelist.includes(originalHost || forwardedHost)) {
+		return json({ message: 'Not Supported' }, { status: 503 });
+	}
 
 	try {
 		const { provider, ...data } = await request.json();
